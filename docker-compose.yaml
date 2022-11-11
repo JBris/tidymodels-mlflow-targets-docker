@@ -8,4 +8,6 @@ services:
       context: .
       args:
         TIDYVERSE_TAG: $TIDYVERSE_TAG
+        CONDA_VERSION: $CONDA_VERSION
+        CONDA_PATH: $CONDA_PATH
         
