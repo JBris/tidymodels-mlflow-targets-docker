@@ -9,15 +9,14 @@ RUN /rocker_scripts/install_python.sh
 RUN install2.r --error --skipmissing --skipinstalled -n -1 mlflow tidymodels
 
 ARG CONDA_VERSION
+ARG CONDA_PATH
 
 RUN wget \
     https://repo.anaconda.com/miniconda/Miniconda3-${CONDA_VERSION}-Linux-x86_64.sh \
-    && mkdir /root/.conda \
-    && bash Miniconda3-${CONDA_VERSION}-Linux-x86_64.sh -b \
+    && bash Miniconda3-${CONDA_VERSION}-Linux-x86_64.sh -b -p ${CONDA_PATH} \
     && rm -f Miniconda3-${CONDA_VERSION}-Linux-x86_64.sh 
 
-ARG CONDA_PATH
-ENV PATH="${CONDA_PATH}:${PATH}"
+ENV PATH="${CONDA_PATH}/bin:${PATH}"
 
 RUN Rscript -e 'library(mlflow); install_mlflow()' 
 
