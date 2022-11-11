@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+
+  rstudio:
+    image: "rocker/tidyverse:${TIDYVERSE_TAG}"
+    build: 
+      context: .
+      args:
+        TIDYVERSE_TAG: $TIDYVERSE_TAG
+        
