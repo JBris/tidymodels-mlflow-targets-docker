@@ -20,4 +20,6 @@ ENV PATH="${CONDA_PATH}/bin:${PATH}"
 
 RUN Rscript -e 'library(mlflow); install_mlflow()' 
 
+RUN Rscript -e 'reticulate::conda_install("r-mlflow-1.30.0", c("boto3", "minio"))'  
+
 RUN rm -rf /tmp/downloaded_packages && rm -rf /var/lib/apt/lists/* && strip /usr/local/lib/R/site-library/*/libs/*.so
