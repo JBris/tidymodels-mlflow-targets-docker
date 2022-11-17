@@ -6,7 +6,7 @@ COPY rocker_scripts/install_python.sh /rocker_scripts/install_python.sh
 
 RUN /rocker_scripts/install_python.sh
 
-RUN install2.r --error --skipmissing --skipinstalled -n -1 mlflow tidymodels carrier targets DataExplorer
+RUN install2.r --error --skipmissing --skipinstalled -n -1 mlflow tidymodels carrier targets DataExplorer ranger
 
 ARG CONDA_VERSION
 ARG CONDA_PATH
@@ -22,7 +22,7 @@ RUN conda init bash
  
 RUN Rscript -e 'library(mlflow); install_mlflow()' 
 
-RUN Rscript -e 'reticulate::conda_install("r-mlflow-1.30.0", c("boto3", "minio"))'  
+RUN Rscript -e 'reticulate::conda_install("r-mlflow-1.30.0", c("boto3", "minio", "python-confluent-kafka"))'  
 
 RUN apt-get update && apt-get install -y --no-install-recommends libglpk-dev libgmp3-dev libxml2-dev
 
