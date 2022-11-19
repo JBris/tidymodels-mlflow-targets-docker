@@ -6,7 +6,7 @@ COPY rocker_scripts/install_python.sh /rocker_scripts/install_python.sh
 
 RUN /rocker_scripts/install_python.sh
 
-RUN install2.r --error --skipmissing --skipinstalled -n -1 mlflow tidymodels carrier targets DataExplorer ranger
+RUN install2.r --error --skipmissing --skipinstalled -n -1 mlflow tidymodels carrier targets DataExplorer assertr ranger
 
 ARG CONDA_VERSION
 ARG CONDA_PATH
